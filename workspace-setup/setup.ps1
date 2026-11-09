@@ -1,10 +1,10 @@
 <#
 .SYNOPSIS
-    workspace-setup für Windows 11 – prüft Apps und installiert fehlende über winget.
+    workspace-setup fuer Windows 11 - prueft Apps und installiert fehlende ueber winget.
 .DESCRIPTION
-    Öffnet keine Apps (das macht nur workspace-setup.sh auf dem Ubuntu-Laptop).
+    Oeffnet keine Apps (das macht nur workspace-setup.sh auf dem Ubuntu-Laptop).
 .PARAMETER DryRun
-    Nur anzeigen, was installiert würde.
+    Nur anzeigen, was installiert wuerde.
 .EXAMPLE
     powershell -ExecutionPolicy Bypass -File .\setup.ps1
 #>
@@ -21,20 +21,19 @@ $Apps = [ordered]@{
 }
 # -----------------------------------------------------------
 
-function Write-Ok($msg)   { Write-Host "✔ $msg" -ForegroundColor Green }
-function Write-Inst($msg) { Write-Host "⬇ $msg" -ForegroundColor Cyan }
-function Write-Fail($msg) { Write-Host "✘ $msg" -ForegroundColor Red }
+function Write-Ok($msg)   { Write-Host "[OK] $msg" -ForegroundColor Green }
+function Write-Inst($msg) { Write-Host "[+]  $msg" -ForegroundColor Cyan }
+function Write-Fail($msg) { Write-Host "[X]  $msg" -ForegroundColor Red }
 
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 Write-Host "workspace-setup $Version (Windows)`n"
 
 if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
-    Write-Fail 'winget nicht gefunden. Installiere «App Installer» aus dem Microsoft Store.'
+    Write-Fail 'winget nicht gefunden. Installiere "App Installer" aus dem Microsoft Store.'
     exit 2
 }
-if ($DryRun) { Write-Host "! Dry-Run – es wird nichts verändert`n" -ForegroundColor Yellow }
+if ($DryRun) { Write-Host "! Dry-Run - es wird nichts veraendert`n" -ForegroundColor Yellow }
 
-Write-Host '== Apps prüfen ==' -ForegroundColor White
+Write-Host '== Apps pruefen ==' -ForegroundColor White
 $failed = 0
 
 foreach ($name in $Apps.Keys) {
@@ -45,7 +44,7 @@ foreach ($name in $Apps.Keys) {
         continue
     }
 
-    Write-Inst "$name fehlt – wird installiert ($id)"
+    Write-Inst "$name fehlt - wird installiert ($id)"
     if ($DryRun) {
         Write-Host "  [dry-run] winget install --id $id --exact --silent" -ForegroundColor DarkGray
         continue
