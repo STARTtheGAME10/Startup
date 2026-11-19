@@ -14,10 +14,9 @@ Ein Befehl, und die Arbeitsumgebung ist startklar: Das Skript prüft, ob meine S
 
 == Arbeitsflächen einrichten ==
 ⬇ Fläche 1  org.gnome.Nautilus.desktop
-⬇ Fläche 2  firefox_firefox.desktop
+⬇ Fläche 2  brave-origin.desktop
 ⬇ Fläche 3  chrome-faoln…-Default.desktop
 ⬇ Fläche 3  chrome-ompif…-Default.desktop
-⬇ Fläche 4  brave-origin.desktop
 ✔ Fläche 4  discord_discord.desktop          läuft bereits
 ✔ Zuordnung wird in 60s automatisch zurückgesetzt
 ```
@@ -35,9 +34,9 @@ Ein Befehl, und die Arbeitsumgebung ist startklar: Das Skript prüft, ob meine S
 | Fläche | Apps |
 |---|---|
 | 1 | Dateimanager (Nautilus) – das Terminal, aus dem das Skript läuft, ist ja schon da |
-| 2 | Firefox |
+| 2 | Brave Origin |
 | 3 | Outlook-PWA, Teams-PWA (Chromium) |
-| 4 | Brave Origin, Discord |
+| 4 | Discord |
 
 Apps, die schon laufen, werden nicht doppelt geöffnet.
 
@@ -105,9 +104,9 @@ RESTORE_DELAY=60        # Sekunden bis zum Zurücksetzen
 
 LAYOUT=(
   # Fläche | Desktop-ID | Startbefehl | Prozessmuster
-  "2|firefox_firefox.desktop|firefox|/snap/firefox/.*/firefox"
+  "2|@exec:brave-origin|brave-origin|brave-origin"
   "3|@pwa:Outlook||"                     # PWA per Name suchen
-  "4|@exec:brave-origin|brave-origin|brave-origin"
+  "4|discord_discord.desktop|discord|/snap/discord/.*Discord"
 )
 ```
 

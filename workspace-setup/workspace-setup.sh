@@ -25,10 +25,9 @@ RESTORE_DELAY=60
 #    App nicht nochmals geöffnet. Leer = immer öffnen.
 LAYOUT=(
   "1|org.gnome.Nautilus.desktop|nautilus --new-window|"
-  "2|firefox_firefox.desktop|firefox|/snap/firefox/.*/firefox"
+  "2|@exec:brave-origin|brave-origin|brave-origin"
   "3|@pwa:Outlook||"
   "3|@pwa:Teams||"
-  "4|@exec:brave-origin|brave-origin|brave-origin"
   "4|discord_discord.desktop|discord|/snap/discord/.*Discord"
 )
 
